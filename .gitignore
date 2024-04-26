@@ -9,3 +9,4 @@ kubernetes/set_env.sh
 setup/*.log
 *.log
 node_modules
+kubernetes/deploy-secrets.sh

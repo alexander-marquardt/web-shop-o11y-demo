@@ -1,5 +1,12 @@
-source ./kubernetes/deploy-secrets.sh
+. ./kubernetes/deploy-secrets.sh
 # you need kubectl and helm installed on your machine
+echo $MIMIR_KEY
+if [ -z "${MIMIR_KEY}" ]; then
+    echo "MIMIR_KEY is unset or set to an empty string - exiting"
+    exit
+else
+    echo "MIMIR_KEY is set to ${MIMIR_KEY}"
+fi
 
 
 kubectl apply -f kubernetes/01-namespace.yaml
@@ -11,6 +18,7 @@ kubectl apply -f kubernetes/products.yaml
 envsubst < kubernetes/web-shop.yaml | kubectl apply -f -
 
 #envsubst < kubernetes/04-xk6-browser.yaml | kubectl apply -f -
+
 
 
 

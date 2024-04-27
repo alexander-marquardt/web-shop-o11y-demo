@@ -10,3 +10,4 @@ setup/*.log
 *.log
 node_modules
 kubernetes/deploy-secrets.sh
+**/.DS_Store

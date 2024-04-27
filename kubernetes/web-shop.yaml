@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
         - name: web-shop
-          image: condla/web-shop:2.3
+          image:  alexmarquardt/web-shop:2.4
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: grafana-k8s-monitoring-grafana-agent.agent.svc.cluster.local:4317

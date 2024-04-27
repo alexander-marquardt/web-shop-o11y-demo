@@ -1,35 +1,41 @@
 // Raw JavaScript
-var appAgentReceiverEndpoint = document.getElementById("variables").dataset.appAgentReceiverEndpoint;
-console.log(appAgentReceiverEndpoint);
 
-const webSdkScript = document.createElement('script');
+var webSdkScript = document.createElement("script");
 
-webSdkScript.src = 'https://unpkg.com/@grafana/faro-web-sdk@^1.0.0/dist/bundle/faro-web-sdk.iife.js';
+webSdkScript.src =
+  "https://unpkg.com/@grafana/faro-web-sdk@^1.4.0/dist/bundle/faro-web-sdk.iife.js";
 
 webSdkScript.onload = () => {
   window.GrafanaFaroWebSdk.initializeFaro({
-    url: appAgentReceiverEndpoint,
+    url: "https://faro-collector-prod-eu-west-2.grafana.net/collect/bc19b7160428440ed92dfbfc0f6fe21f",
     app: {
-      name: 'web-shop-browser',
-      version: '1.6.0',
-      environment: 'production',
+      name: "web shop",
+      version: "1.0.0",
+      environment: "production",
     },
+    
   });
 
-  const webTracingScript = document.createElement('script');
-  webTracingScript.src = 'https://unpkg.com/@grafana/faro-web-tracing@^1.0.0/dist/bundle/faro-web-tracing.iife.js';
+
+  // Load instrumentations at the onLoad event of the web-SDK and after the above configuration.
+  // This is important because we need to ensure that the Web-SDK has been loaded and initialized before we add further instruments!
+  var webTracingScript = document.createElement("script");
+
+  webTracingScript.src =
+    "https://unpkg.com/@grafana/faro-web-tracing@^1.4.0/dist/bundle/faro-web-tracing.iife.js";
+
+  // Initialize, configure (if necessary) and add the the new instrumentation to the already loaded and configured Web-SDK.
   webTracingScript.onload = () => {
-    window.GrafanaFaroWebSdk.faro.instrumentations.add(new window.GrafanaFaroWebTracing.TracingInstrumentation({
-      // Optional, if you want to add custom attributes to the resource
-      resourceAttributes: {
-        "service.name": "web-shop-browser",
-        "team.name": "browser"
-      },
-    }));
+    window.GrafanaFaroWebSdk.faro.instrumentations.add(
+      new window.GrafanaFaroWebTracing.TracingInstrumentation()
+    );
   };
+
+  // Append the Web Tracing script script tag to the HTML page
   document.head.appendChild(webTracingScript);
 };
 
+// Append the Web-SDK script script tag to the HTML page
 document.head.appendChild(webSdkScript);
 
 

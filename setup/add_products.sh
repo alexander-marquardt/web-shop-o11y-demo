@@ -9,10 +9,10 @@ echo $PUBLIC_APP_URL
 load_clothes() {
   echo "Loading some clothes into the product catalog..."
   curl -X POST -H "Content-Type: application/json" -d '{"name": "Red dress", "price": "29.99", "tag": "cool", "pic_ref": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=2583&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
-  curl -X POST -H "Content-Type: application/json" -d '{"name": "Colored shirts", "price": "39.99", "tag": "", "pic_ref": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
-  curl -X POST -H "Content-Type: application/json" -d '{"name": "Jeans and T-shirt", "price": "19.50", "tag": "special", "pic_ref": "https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=2454&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
-  curl -X POST -H "Content-Type: application/json" -d '{"name": "White shirt", "price": "25.00", "tag": "special", "pic_ref": "https://plus.unsplash.com/premium_photo-1690034979531-17038351d76f?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
-  curl -X POST -H "Content-Type: application/json" -d '{"name": "Green shirt", "price": "18.99", "tag": "green", "pic_ref": "https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
+  curl -X POST -H "Content-Type: application/json" -d '{"name": "White shirt", "price": "39.99", "tag": "", "pic_ref": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
+  curl -X POST -H "Content-Type: application/json" -d '{"name": "Colored Shirts", "price": "19.50", "tag": "special", "pic_ref": "https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=2454&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
+  curl -X POST -H "Content-Type: application/json" -d '{"name": "Jeans and T-shirt", "price": "25.00", "tag": "special", "pic_ref": "https://plus.unsplash.com/premium_photo-1690034979531-17038351d76f?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
+  curl -X POST -H "Content-Type: application/json" -d '{"name": "Green shirts", "price": "18.99", "tag": "green", "pic_ref": "https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
   curl -X POST -H "Content-Type: application/json" -d '{"name": "Black shirt", "price": "29.99", "tag": "Goth", "pic_ref": "https://images.unsplash.com/photo-1599255068390-206e0d068539?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
   curl -X POST -H "Content-Type: application/json" -d '{"name": "Sun glasses", "price": "109.99", "tag": "cool", "pic_ref": "https://images.unsplash.com/photo-1622470953794-aa9c70b0fb9d?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D0"}' ${PUBLIC_APP_URL}:8080/products/ >& add_products.sh.log
 
@@ -94,6 +94,7 @@ usage() {
   echo 
   echo "Available verticals for add_product:"
   echo "  default            it loads some clothes" 
+  echo "  kittens            it loads some kittens" 
   echo "  phones             it loads some smartphones"
   echo "  energy             it loads some energy products"
   echo "  food               it loads some food products"

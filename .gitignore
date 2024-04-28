@@ -9,5 +9,7 @@ kubernetes/set_env.sh
 setup/*.log
 *.log
 node_modules
+**/package-lock.json
+**/package.json
 kubernetes/deploy-secrets.sh
 **/.DS_Store

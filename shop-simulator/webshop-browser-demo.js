@@ -31,7 +31,7 @@ export async function browser() {
   try {
     random = Math.floor(Math.random() * users.length);
     let user = users[random];
-    await page.goto('http://grafana.datahovel.com:3389/shop?name='+user);
+    await page.goto('http://alexandermarquardt.info/shop?name='+user);
 
 
     let selector, elem;

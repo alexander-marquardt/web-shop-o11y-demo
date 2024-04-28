@@ -12,7 +12,7 @@ metadata:
 spec:
   ports:
     - name: "core"
-      port: 3389
+      port: 80
       targetPort: 3389
   type: LoadBalancer
   selector:
@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
         - name: web-shop
-          image:  alexmarquardt/web-shop:2.6
+          image:  alexmarquardt/web-shop:2.9
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: grafana-k8s-monitoring-grafana-agent.agent.svc.cluster.local:4317

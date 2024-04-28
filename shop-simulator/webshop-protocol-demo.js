@@ -80,8 +80,8 @@ export const options = {
 export function scenario_1() {
   let response
 
-  group(`page_1 - http://${__ENV.HOSTNAME}:3389/shop?name=${users[vu.idInTest -1].username}`, function () {
-    response = http.get(`http://${__ENV.HOSTNAME}:3389/shop?name=${users[vu.idInTest -1].username}`, {
+  group(`page_1 - http://${__ENV.HOSTNAME}/shop?name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
+    response = http.get(`http://${__ENV.HOSTNAME}/shop?name=${users[(vu.idInTest - 1) % users.length].username}`, {
       headers: {
         'upgrade-insecure-requests': '1',
       },
@@ -89,16 +89,16 @@ export function scenario_1() {
     sleep(2.6)
   })
 
-  group(`page_2 - http://${__ENV.HOSTNAME}:3389/shop?product=Meows&name=${users[vu.idInTest -1].username}`, function () {
+  group(`page_2 - http://${__ENV.HOSTNAME}/shop?product=Meows&name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/shop?product=Meows&name=${users[vu.idInTest -1].username}`,
+      `http://${__ENV.HOSTNAME}/shop?product=Meows&name=${users[(vu.idInTest - 1) % users.length].username}`,
       {
         product: `Meows`,
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
       }
@@ -106,16 +106,16 @@ export function scenario_1() {
     sleep(2)
   })
 
-  group(`page_3 - http://${__ENV.HOSTNAME}:3389/shop?product=Carlos&name=${users[vu.idInTest -1].username}`, function () {
+  group(`page_3 - http://${__ENV.HOSTNAME}/shop?product=Carlos&name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/shop?product=${users[vu.idInTest -1].cat}&name=${users[vu.idInTest -1].username}`,
+      `http://${__ENV.HOSTNAME}/shop?product=${users[(vu.idInTest - 1) % users.length].cat}&name=${users[(vu.idInTest - 1) % users.length].username}`,
       {
         product: 'Carlos',
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
       }
@@ -123,16 +123,16 @@ export function scenario_1() {
     sleep(2)
   })
 
-  group(`page_4 - http://${__ENV.HOSTNAME}:3389/shop?product=Carla&name=${users[vu.idInTest -1].username}`, function () {
+  group(`page_4 - http://${__ENV.HOSTNAME}/shop?product=Carla&name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/shop?product=Carla&name=${users[vu.idInTest -1].username}`,
+      `http://${__ENV.HOSTNAME}/shop?product=Carla&name=${users[(vu.idInTest - 1) % users.length].username}`,
       {
         product: 'Carla',
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
       }
@@ -140,8 +140,8 @@ export function scenario_1() {
     sleep(2.3)
   })
 
-  group(`page_5 - http://${__ENV.HOSTNAME}:3389/cart?name=${users[vu.idInTest -1].username}`, function () {
-    response = http.get(`http://${__ENV.HOSTNAME}:3389/cart?name=${users[vu.idInTest -1].username}`, {
+  group(`page_5 - http://${__ENV.HOSTNAME}/cart?name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
+    response = http.get(`http://${__ENV.HOSTNAME}/cart?name=${users[(vu.idInTest - 1) % users.length].username}`, {
       headers: {
         'upgrade-insecure-requests': '1',
       },
@@ -149,14 +149,14 @@ export function scenario_1() {
     sleep(3.4)
 
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/cart?name=${users[vu.idInTest -1].username}`,
+      `http://${__ENV.HOSTNAME}/cart?name=${users[(vu.idInTest - 1) % users.length].username}`,
       {
-        name: `${users[vu.idInTest -1].username}`,
+        name: `${users[(vu.idInTest - 1) % users.length].username}`,
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
       }
@@ -164,8 +164,8 @@ export function scenario_1() {
     sleep(3.1)
   })
 
-  group(`page_6 - http://${__ENV.HOSTNAME}:3389/shop?name=${users[vu.idInTest -1].username}#cats`, function () {
-    response = http.get(`http://${__ENV.HOSTNAME}:3389/shop?name=${users[vu.idInTest -1].username}`, {
+  group(`page_6 - http://${__ENV.HOSTNAME}/shop?name=${users[(vu.idInTest - 1) % users.length].username}#cats`, function () {
+    response = http.get(`http://${__ENV.HOSTNAME}/shop?name=${users[(vu.idInTest - 1) % users.length].username}`, {
       headers: {
         'upgrade-insecure-requests': '1',
       },
@@ -173,16 +173,16 @@ export function scenario_1() {
     sleep(2)
   })
 
-  group(`page_7 - http://${__ENV.HOSTNAME}:3389/shop?product=Loki&name=${users[vu.idInTest -1].username}`, function () {
+  group(`page_7 - http://${__ENV.HOSTNAME}/shop?product=Loki&name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/shop?product=Loki&name=${users[vu.idInTest -1].username}`,
+      `http://${__ENV.HOSTNAME}/shop?product=Loki&name=${users[(vu.idInTest - 1) % users.length].username}`,
       {
         product: 'Loki',
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
       }
@@ -190,16 +190,16 @@ export function scenario_1() {
     sleep(2)
   })
 
-  group(`page_8 - http://${__ENV.HOSTNAME}:3389/shop?product=Charlie&name=${users[vu.idInTest -1].username}`, function () {
+  group(`page_8 - http://${__ENV.HOSTNAME}/shop?product=Charlie&name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/shop?product=Charlie&name=${users[vu.idInTest -1].username}`,
+      `http://${__ENV.HOSTNAME}/shop?product=Charlie&name=${users[(vu.idInTest - 1) % users.length].username}`,
       {
         product: 'Charlie',
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
       }
@@ -207,16 +207,16 @@ export function scenario_1() {
     sleep(2)
   })
 
-  group(`page_9 - http://${__ENV.HOSTNAME}:3389/shop?product=Carla&name=${users[vu.idInTest -1].username}`, function () {
+  group(`page_9 - http://${__ENV.HOSTNAME}/shop?product=Carla&name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/shop?product=Carla&name=${users[vu.idInTest -1].username}`,
+      `http://${__ENV.HOSTNAME}/shop?product=Carla&name=${users[(vu.idInTest - 1) % users.length].username}`,
       {
         product: 'Carla',
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
       }
@@ -224,8 +224,8 @@ export function scenario_1() {
     sleep(2)
   })
 
-  group(`page_10 - http://${__ENV.HOSTNAME}:3389/cart?name=${users[vu.idInTest -1].username}`, function () {
-    response = http.get(`http://${__ENV.HOSTNAME}:3389/cart?name=${users[vu.idInTest -1].username}`, {
+  group(`page_10 - http://${__ENV.HOSTNAME}/cart?name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
+    response = http.get(`http://${__ENV.HOSTNAME}/cart?name=${users[(vu.idInTest - 1) % users.length].username}`, {
       headers: {
         'upgrade-insecure-requests': '1',
       },
@@ -233,16 +233,16 @@ export function scenario_1() {
     sleep(2.9)
   })
   
-  group(`page_11a - http://${__ENV.HOSTNAME}:3389/shop?product=Carla&name=${users[vu.idInTest -1].username}`, function () {
+  group(`page_11a - http://${__ENV.HOSTNAME}/shop?product=Carla&name=${users[(vu.idInTest - 1) % users.length].username}`, function () {
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/cart?name=${users[vu.idInTest -1].username}&discount=true`,
+      `http://${__ENV.HOSTNAME}/cart?name=${users[(vu.idInTest - 1) % users.length].username}&discount=true`,
       {
-        name: `${users[vu.idInTest -1].username}`,
+        name: `${users[(vu.idInTest - 1) % users.length].username}`,
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
       }
@@ -250,16 +250,16 @@ export function scenario_1() {
     sleep(2)
   })
   
-  group(`page_11b - http://${__ENV.HOSTNAME}:3389/cart?name=${users[vu.idInTest -1].username}&checkout=true`, function () {
+  group(`page_11b - http://${__ENV.HOSTNAME}/cart?name=${users[(vu.idInTest - 1) % users.length].username}&checkout=true`, function () {
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/cart?name=${users[vu.idInTest -1].username}&checkout=true`,
+      `http://${__ENV.HOSTNAME}/cart?name=${users[(vu.idInTest - 1) % users.length].username}&checkout=true`,
       {
-        name: `${users[vu.idInTest -1].username}`,
+        name: `${users[(vu.idInTest - 1) % users.length].username}`,
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: `http://${__ENV.HOSTNAME}:3389`,
+          origin: `http://${__ENV.HOSTNAME}`,
           'upgrade-insecure-requests': '1',
         },
       }
@@ -271,18 +271,18 @@ export function scenario_1() {
 export function scenario_2() {
   let response
   const randomUser = usersScenario2[Math.floor(Math.random() * usersScenario2.length)];
-  group(`page_1 - http://${__ENV.HOSTNAME}:3389/shop?name=${randomUser}#cats`, function () {
+  group(`page_1 - http://${__ENV.HOSTNAME}/shop?name=${randomUser}#cats`, function () {
 
 
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/shop?product=Loki&name=${randomUser}`,
+      `http://${__ENV.HOSTNAME}/shop?product=Loki&name=${randomUser}`,
       {
         product: "Loki"
       },
       {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          origin: 'http://${__ENV.HOSTNAME}:3389',
+          origin: 'http://${__ENV.HOSTNAME}',
           'upgrade-insecure-requests': '1',
         },
 
@@ -292,8 +292,8 @@ export function scenario_2() {
     sleep(1)
   })
 
-  group(`page_2 - http://${__ENV.HOSTNAME}:3389/cart?name=${randomUser}`, function () {
-    response = http.get(`http://${__ENV.HOSTNAME}:3389/cart?name=${randomUser}`, {
+  group(`page_2 - http://${__ENV.HOSTNAME}/cart?name=${randomUser}`, function () {
+    response = http.get(`http://${__ENV.HOSTNAME}/cart?name=${randomUser}`, {
       headers: {
         'upgrade-insecure-requests': '1',
         accept:
@@ -305,20 +305,20 @@ export function scenario_2() {
     sleep(0.6)
 
     response = http.post(
-      `http://${__ENV.HOSTNAME}:3389/cart?name=${randomUser}&checkout=true`,
+      `http://${__ENV.HOSTNAME}/cart?name=${randomUser}&checkout=true`,
       '{"name":"${randomUser}"}',
       {
         headers: {
           'content-type': 'application/json',
           accept: '*/*',
-          origin: `http://${__ENV.HOSTNAME}:3389`,
+          origin: `http://${__ENV.HOSTNAME}`,
           'accept-encoding': 'gzip, deflate',
           'accept-language': 'en-US,en;q=0.9,de-AT;q=0.8,de;q=0.7',
         },
       }
     )
     sleep(0.6)
-    response = http.get(`http://${__ENV.HOSTNAME}:3389/cart?name=${randomUser}`, {
+    response = http.get(`http://${__ENV.HOSTNAME}/cart?name=${randomUser}`, {
       headers: {
         'upgrade-insecure-requests': '1',
         accept:
